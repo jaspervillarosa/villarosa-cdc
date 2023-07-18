@@ -1,0 +1,105 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <script src="https://kit.fontawesome.com/d258feda9a.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper">
+            <div class="logo">
+                <a href="" class="icon-logo"><i class="fa-solid fa-virus-slash"></i>Classification</a>
+            </div>
+            <ul id="menu">
+                <li><a href="/">Image Classifier</a></li>
+                <li><a href="viewDatabase">Database</a></li>
+                <li><a href="captureImage">Image Capture</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Menu Icon -->
+    <div class="menuIcon">
+        <span class="icon icon-bars"></span>
+        <span class="icon icon-bars overlay"></span>
+    </div>
+
+    <div class="overlay-menu">
+        <ul id="menu">
+            <li><a href="/">Image Classifier</a></li>
+            <li><a href="viewDatabase" >Database</a></li>
+            <li><a href="captureImage">Image Capture</a></li>
+        </ul>
+    </div>
+
+    <div class="title-container">
+        <h1>Coconut Damage Classifier</h1>
+        <p>Upload Coconut Pest Damage for Classification</p><br>
+    </div>
+    <div class="box">
+        <form class="container-big" action="predictImage/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="container-dragDrop">
+                <div class="container">
+                    <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <header class="header">Drag & Drop to Upload File</header>
+                    <span>OR</span>
+                    <input name="filePath" type="file" class="fileInput">
+                </div>
+                <div class="buttons">
+                    <input type="submit" tabindex="1" value="Predict" class="predict">
+                    <input type="reset" value="Reset" class="reset">
+                </div>
+            </div>
+            <div class="img">
+                <h5>{{identification}}</h5>
+                <div class="img-wrap">
+                    <span class="t_over"></span>
+                    <span class="t_over"></span>
+                    <span class="t_over"></span>
+                    <span class="t_over"></span>
+                    <span class="t_over"></span>
+                    <span class="t_over"></span>
+                    <span class="t_over"></span>
+                    <span class="t_over"></span>
+                    <span class="t_over"></span>
+                    <span class="t_over"></span>
+                    <img class="img-index" src="{{filePathName}}"><br>
+                </div>
+                <div class="p-solution">
+                    <p>{{solution1}}</p>
+                    <p>{{solution2}}</p>
+                    <p>{{solution3}}</p>
+                    <p>{{solution4}}</p>
+                    <p>{{solution5}}</p>
+                    <p>{{solution6}}</p>
+                    
+                </div>
+                <!-- {{filePathName}} -->
+            </div>
+           
+        </form>
+    </div>
+    <div class="boxTwo">
+        {% autoescape off %}
+        <div class="graph">{{ g }}</div>
+        {% endautoescape %}
+    </div>
+    <!-- <div>
+        <p>{{train_acc}}</p>
+    </div> -->
+
+
+    <footer>
+        <p class="p-footer">Created by Jasper Villarosa. © 2023</p>
+    </footer>
+    <script src="{% static 'script.js' %}"></script>
+    <script src="{% static 'toggle.js' %}"></script>
+    
+</body>
+</html>
