@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django.core.files.storage import FileSystemStorage
 from keras.models import load_model
@@ -13,7 +13,9 @@ import matplotlib
 matplotlib.use("Agg")  # Use the "Agg" backend for non-interactive use
 import matplotlib.pyplot as plt
 from django.shortcuts import render
-
+from django.contrib.auth.decorators import login_required
+from .models import CoconutDamages
+from .forms import CoconutDamagesForm
 
 model = load_model('./models/ResNet50_Architecture_coconutDamages_ai_training.h5')
 
@@ -24,6 +26,7 @@ conv_base = ResNet50(weights='imagenet',
                   include_top=False,
                   input_shape=(150, 150, 3))
 
+@login_required(login_url='admin-login')
 def index(request):
     context={'a': 1}
     print("Hello World")
@@ -31,6 +34,7 @@ def index(request):
 
 # Create your views here.
 
+@login_required(login_url='user-login')
 def predictImage(request):
 
     
@@ -81,7 +85,7 @@ def predictImage(request):
         identification = "Diagnosis: Record of this data does not exist!"
         solution1 = "Not applicable"
 
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(4, 4))
     ax.clear()
     width = 0.5
     pests = ['Coconut Scale Insect Damage', 'Rhinoceros Beetle Damage']
@@ -109,8 +113,9 @@ def predictImage(request):
     # _, validation_acc = model.evaluate(validation_features, validation_labels)
  
     contexttwo={'filePathName': filePathName, 'result': result, 'identification': identification, "scaleInsectDamageScore": scaleInsectDamageScore, "rhinocerosBeetleDamageScore": rhinocerosBeetleDamageScore, "g": interactive_plot, "solution1": solution1, "solution2":solution2, "solution3":solution3, "solution4" : solution4, "solution5":solution5, "solution6" : solution6  }
-    return render(request, 'index.html', contexttwo)
+    return render(request, 'result.html', contexttwo)
 
+@login_required(login_url='user-login')
 def viewDatabase(request):
     listofImages = os.listdir('./media/')
     listofImagePath = ['./media/'+i for i in listofImages]
@@ -118,6 +123,55 @@ def viewDatabase(request):
     context = {'listofImagePath': listofImagePath}
     return render(request, 'viewDB.html', context)
 
+@login_required(login_url='user-login')
+def coconutDamages(request):
+    # items = CoconutDamages.objects.all()
+    items = CoconutDamages.objects.raw('SELECT * FROM thesis_CoconutDamages')
+    context = {
+        'items': items,
+    }
+    # context = {}
+    return render(request, 'coconutdamages.html', context)
+
+def add_coconutDamages(request):
+    if request.method == 'POST':
+        form = CoconutDamagesForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('coconutDamages')
+    else:
+        form = CoconutDamagesForm()
+    context = {
+            'form': form,
+    }
+    return render(request, 'add_coconutdamages.html', context)
+
+@login_required(login_url='user-login')
 def captureImage(request):
     context = {}
     return render(request, 'captureMedia.html', context)
+
+def delete_coconutDamages(request, pk):
+
+    item = CoconutDamages.objects.get(id=pk)
+    if request.method == 'POST':
+        item.delete()
+        return redirect('coconutDamages')
+    return render(request, 'delete_coconutdamages.html')
+
+def update_coconutDamages(request, pk):
+    item = CoconutDamages.objects.get(id=pk)
+    if request.method == 'POST':
+        form = CoconutDamagesForm(request.POST, instance=item)
+        if form.is_valid():
+            form.save()
+            return redirect('coconutDamages')
+    else:
+        form = CoconutDamagesForm(instance=item)
+    context ={
+        'form': form
+    }
+    return render(request, 'update_coconutdamages.html', context)
+# def login(request):
+#     context = {}
+#     return render(request, 'sample.html', context)

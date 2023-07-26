@@ -1,0 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <link rel="stylesheet" href="{% static 'register.css' %}">
+    <script src="https://kit.fontawesome.com/d258feda9a.js" crossorigin="anonymous"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper">
+            <div class="logo">
+                <a href="" class="icon-logo"><i class="fa-solid fa-virus-slash"></i>Classification</a>
+            </div>
+            <ul id="menu">
+                <li><a href="/">Image Classifier</a></li>
+                <li><a href="viewdatabase">Database</a></li>
+                <li><a href="captureimage">Image Capture</a></li>
+                <li><a href="{% url 'user-login' %}"><i class="fa-solid fa-lock"></i>login</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Menu Icon -->
+    <div class="menuIcon">
+        <span class="icon icon-bars"></span>
+        <span class="icon icon-bars overlay"></span>
+    </div>
+
+    <div class="overlay-menu">
+        <ul id="menu">
+            <li><a href="#tryAgain">Image Classifier</a></li>
+            <li><a href="viewdatabase" >Database</a></li>
+            <li><a href="captureimage">Image Capture</a></li>
+            <li><a href="{% url 'user-login' %}">login</a></li>
+        </ul>
+    </div>
+
+    <div class="registration-container">
+        <div class="r-container">
+            <div class="r-row row mt-5 ">
+                <div class="col-md-6 offset-md-3">
+                    <div class="r-border border bg-white p-3">
+                        <h3>Registration Page</h3>
+                        <br>
+                        <hr>
+                        <form class="r-form" method="POST">
+                            {% csrf_token %}
+                            {{form}}
+                            <input class="btn btn-success" type="submit" value="Register">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p class="p-footer">Created by Jasper Villarosa. © 2023</p>
+    </footer>
+    <script src="{% static 'script.js' %}"></script>
+    <script src="{% static 'toggle.js' %}"></script>
+    <script src="{% static 'login.js' %}"></script>
+
+
+</body>
+</html>

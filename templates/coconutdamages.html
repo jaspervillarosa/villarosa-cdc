@@ -1,0 +1,87 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <link rel="stylesheet" href="{% static 'register.css' %}">
+    <link rel="stylesheet" href="{% static 'coconutdamages.css' %}">
+    <script src="https://kit.fontawesome.com/d258feda9a.js" crossorigin="anonymous"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+   
+</head>
+
+<body class="bodyDB">
+
+    <nav>
+        <div class="nav-wrapper">
+            <div class="logo">
+                <a href="" class="icon-logo"><i class="fa-solid fa-virus-slash"></i>Classification</a>
+            </div>
+            <ul id="menu">
+                <li><a href="/">Image Classifier</a></li>
+                <li><a href="viewdatabase">Database</a></li>
+                <li><a href="captureimage">Image Capture</a></li>
+                <li><a href="{% url 'user-logout' %}"><i class="fa-solid fa-unlock-keyhole"></i>logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Menu Icon -->
+    <div class="menuIcon">
+        <span class="icon icon-bars"></span>
+        <span class="icon icon-bars overlay"></span>
+    </div>
+
+    <div class="add-cd">
+        <h2>Coconut Damages</h2>
+        <a class="btn-add" href="{% url 'add_coconutDamages' %}">Add Coconut Damages <i class="fa-solid fa-plus"></i></a>
+    </div>
+    <div class="crud-Container">
+             <!-- CRUD  -->
+       <!-- add damages  -->
+   <table class="table table-borderless">
+    <thead class="cd-thead">
+      <tr class="cd-tr">
+        <th scope="col">Coconut Damages</th>
+        <th scope="col">Biological Control</th>
+        <th scope="col">Cultural Control</th>
+        <th scope="col">Chemical Control</th>
+        <th scope="col">Activity</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for item in items %}
+      <tr>
+        <th scope="row">{{item.name}}</th>
+        <td>{{item.biologicalcontrol}}</td>
+        <td>{{item.culturalcontrol}}</td>
+        <td>{{item.chemicalcontrol}}</td>
+        <td>
+            <a class="btn btn-info btn-sm mr-2"
+                href="{% url 'update_coconutDamages' item.id %}">Update</a>
+            <a class="btn btn-danger btn-sm ml-2"
+                href="{% url 'delete_coconutDamages' item.id %}">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+      
+    </tbody>
+  </table>
+</div>
+
+    <footer>
+        <p>Created by Jasper Villarosa. © 2023</p>
+    </footer>
+
+    <script src="{% static 'script.js' %}"></script>
+    <script src="{% static 'toggle.js' %}"></script>
+    <script src="{% static 'login.js' %}"></script>
+
+    
+    
+</body>
+</html>

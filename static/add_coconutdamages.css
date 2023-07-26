@@ -1,0 +1,37 @@
+.crud-Container{
+    width: 60%;
+}@media(max-width:768px){
+    .crud-Container{
+        width: 80%;
+    }
+}
+
+.crud-Container form{
+    display: flex;
+    flex-direction: column;
+}
+
+.crud-Container input{
+    padding: 1rem;
+}
+.crud-Container label{
+    margin-top: 0.5rem;
+}
+.crud-Container .btn{
+    width: 30%;
+    margin-top: 1rem;
+    padding: 0.25rem;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background-color: #489557;
+    color: white;
+    
+}@media(max-width:768px){
+    .crud-Container .btn{
+        width: 50%;
+    }
+}
+
+.crud-Container .btn:hover{
+    opacity: 0.8;
+}

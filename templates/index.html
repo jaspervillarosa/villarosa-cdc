@@ -1,0 +1,119 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <link rel="stylesheet" href="{% static 'nav.css' %}">
+    <script src="https://kit.fontawesome.com/d258feda9a.js" crossorigin="anonymous"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+</head>
+    <script>
+        
+        function handleCredentialsResponse(response){
+            console.log(response)
+        }
+
+        function init (){
+            google.accounts.id.initialize({
+            client_id: "780217622513-1rrcf136dcc59evh3i2v8vbkm9b4797i.apps.googleusercontent.com",
+            auto_select: true,
+            callback: handleCredentialsResponse
+    })
+        google.account.id.prompt()
+}
+    </script>
+<body onload="init()">
+    <nav>
+        <div class="nav-wrapper">
+            <div class="logo">
+                <a href="" class="icon-logo"><i class="fa-solid fa-virus-slash"></i>Classification</a>
+            </div>
+            <ul id="menu">
+                <li><a href="/">Image Classifier</a></li>
+                <li class="dropdown">
+                    <button class="link"> 
+                        Records
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        Dropdown Content
+                        <!-- <a href="viewdatabase">Database</a>
+                        <a href="coconutdamages">Coconut Damages</a> -->
+                    </div>
+                </li>
+                <li><a href="captureimage">Image Capture</a></li>
+                <li><a href="{% url 'user-logout' %}"><i class="fa-solid fa-unlock-keyhole"></i>logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- <nav class="navbar">
+        <a href="#home">Home</a>
+        <a href="#news">News</a>
+        <div class="dropdown">
+          <button class="dropbtn">Dropdown 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a href="#">Link 3</a>
+          </div>
+        </div> 
+    </nav> -->
+
+    <!-- Menu Icon -->
+    <div class="menuIcon">
+        <span class="icon icon-bars"></span>
+        <span class="icon icon-bars overlay"></span>
+    </div>
+
+    <div class="overlay-menu">
+        <ul id="menu">
+            <li><a href="#tryAgain">Image Classifier</a></li>
+            <li><a href="viewdatabase" >Database</a></li>
+            <li><a href="captureimage">Image Capture</a></li>
+            <li><a href="{% url 'user-logout' %}">logout</a></li>
+        </ul>
+    </div>
+
+    <div class="title-container">
+        <h1>Coconut Damage Classifier</h1>
+        <p>Upload Coconut Pest Damage for Classification</p><br>
+    </div>
+    <div class="box">
+            <form class="container-big" action="predictimage/" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="container-dragDrop">
+                    <div class="container">
+                        <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                        <header class="header">Drag & Drop to Upload File</header>
+                        <span>OR</span>
+                        <input name="filePath" type="file" class="fileInput">
+                    </div>
+                    <div class="buttons">
+                        <input type="submit" tabindex="1" value="Predict" class="predict">
+                        <input type="reset" value="Reset" class="reset">
+                    </div>
+                </div>
+            </form>
+    </div>
+    <!-- <div>
+        <p>{{train_acc}}</p>
+    </div> -->
+
+
+    <footer>
+        <p class="p-footer">Created by Jasper Villarosa. © 2023</p>
+    </footer>
+    <script src="{% static 'script.js' %}"></script>
+    <script src="{% static 'toggle.js' %}"></script>
+    <script src="{% static 'login.js' %}"></script>
+    
+</body>
+</html>

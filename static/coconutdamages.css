@@ -1,0 +1,91 @@
+.crud-Container{
+    margin-inline: 10%;
+    min-height: 100vh;
+    text-align: left;
+}@media(max-width: 768px){
+    .crud-Container{
+        width: 90%;
+    }
+}
+
+.add-cd{
+    margin-top: 6rem;
+    margin-inline: 10%;
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+}@media(max-width: 768px){
+    .add-cd{
+        flex-direction: column;
+        width: 90%;
+    }
+    .add-cd a{
+        margin-top: 1rem;
+        width: 60%;
+    }
+}
+
+.table th,td{
+    padding: 0.5rem;
+}
+td{
+    overflow: hidden;
+}
+
+td .btn{
+    display: flex;
+    text-decoration: none;
+}
+
+.btn-info{
+    border: 1px solid #489557;
+    background-color: #489557;
+    color: white;
+    margin: 0.25rem;
+    border-radius: 16px;
+    padding-inline: 0.5rem;
+    padding-block: 0.25rem;
+}
+
+.btn-info:hover{
+    color: white;
+    opacity: 0.8;
+    border: 1px solid #489557;
+}
+
+.btn-danger{
+    border: 1px solid #489557;
+    color: #489557;
+    margin: 0.25rem;
+    border-radius: 16px;
+    padding-inline: 0.5rem;
+    padding-block: 0.25rem;
+}
+
+.btn-danger:hover{
+    background-color: red;
+    color: white;
+    opacity: 0.8;
+    border: 1px solid transparent;
+    transition: all 0.6s ease-in;
+}
+
+.btn-add{
+    border: 1px solid #489557;
+    background-color: #489557;
+    color: white;
+    margin: 0.25rem;
+    border-radius: 10px;
+    padding-inline: 0.5rem;
+    padding-block: 0.25rem;
+    text-decoration: none;
+    float: right;
+    margin-bottom: 2rem;
+}
+
+.btn-add:hover{
+    background-color: #489557;
+    color: white;
+    opacity: 0.8;
+    border: 1px solid transparent;
+}

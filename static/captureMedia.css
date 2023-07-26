@@ -19,8 +19,13 @@
 .container-Capture{
   border: 2px dashed #489557;
   /* border-top: 2px solid lightgray; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   padding: 1rem;
-  width: 50%;
+  min-height: 46vh;
+  width: 100%;
 }@media(max-width:768px){
 .container-Capture{
     width: 100%;
@@ -116,9 +121,14 @@ h1{
 }
 
 .icon{
-    font-size: 50px;
+    font-size: 75px;
     color: #489557;
+  }@media(max-width: 768px){
+    .icon{
+      font-size: 50px;
+    }
   }
+  
 .buttons{
     max-width: 100%;
     display: flex;
@@ -127,11 +137,15 @@ h1{
 }
 
 .buttons .resetCapture {
-    width: 45%;
+    width: 30%;
     padding-block: 0.25rem;
     border-radius: 16px;
     border: 1px solid lightgray;
     background-color: #F3F4F5;
+}@media(max-width:768px){
+  .buttons .resetCapture {
+    width: 45%;
+  }
 }
 
 .resetCapture:hover{
@@ -140,13 +154,18 @@ h1{
   transition: all 0.6s ease-out;
 }
 .buttons .predictCapture {
-  width: 45%;
+  width: 30%;
   padding-block: 0.25rem;
   border-radius: 16px;
   border: 2px solid #489557;
   background-color: #489557;
   color: white;
+}@media(max-width:768px){
+  .buttons .predictCapture {
+    width: 45%;
+  }
 }
+
 .predictCapture:hover{
   border: 1px solid lightgray;
   background-color: #F3F4F5;

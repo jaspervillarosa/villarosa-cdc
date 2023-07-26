@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>captureMedia</title>
+    <link rel="stylesheet" href="{% static 'viewDB.css'%}">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <link rel="stylesheet" href="{% static 'captureMedia.css' %}">
+    <script src="https://kit.fontawesome.com/d258feda9a.js" crossorigin="anonymous"></script>
+</head>
+<body class="bodyCapture">
+    <nav>
+        <div class="nav-wrapper">
+            <div class="logo">
+                <a href="" class="icon-logo"><i class="fa-solid fa-virus-slash"></i>Classification</a>
+            </div>
+            <ul id="menu">
+                <li><a href="/">Image Classifier</a></li>
+                <li><a href="viewdatabase">Database</a></li>
+                <li><a href="captureimage">Image Capture</a></li>
+                <li><a href="{% url 'user-logout' %}"><i class="fa-solid fa-unlock-keyhole"></i>logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Menu Icon -->
+    <div class="menuIcon">
+        <span class="icon icon-bars"></span>
+        <span class="icon icon-bars overlay"></span>
+    </div>
+
+    <div class="overlay-menu">
+        <ul id="menu">
+            <li><a href="#tryAgain">Image Classifier</a></li>
+            <li><a href="viewdatabase" >Database</a></li>
+            <li><a href="captureimage">Image Capture</a></li>
+            <li><a href="{% url 'user-logout' %}">logout</a></li>
+        </ul>
+    </div>
+
+    <div class="title-container">
+        <h1>Coconut Damage Classifier</h1>
+        <p>Capture Coconut Pest Damage for Classification</p><br>
+    </div>
+
+   <div class="box-Capture">
+    <form class="container-big-Capture" id="myform" action="predictimage/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="container-Capture">
+            <div class="container">
+                <div class="displayContainer">
+                    <div class="icon"><i class="fa-solid fa-camera-retro"></i></div>
+                    <header class="headerCapture">Capture Media</header>
+                    <input 
+                        type="file" 
+                        name="filePath"     
+                        id="capture" 
+                        class="fileCapture"
+                        accept="image/*" 
+                        capture 
+                         />
+                </div>
+                <div class="imgContainer" style="display: none">
+                    <p><img id="img" /></p>
+                </div>
+            </div>
+            <div class="buttons">
+                <input type="submit" tabindex="1" value="Predict" class="predictCapture">
+                <input type="reset" value="Reset" class="resetCapture">
+            </div>
+        </div>
+       
+    </form>
+</div>
+
+
+    <footer>
+        <p>Created by Jasper Villarosa. © 2023</p>
+    </footer>
+
+    <script src="{% static 'toggle.js' %}"></script>
+    <script src="{% static 'captureMedia.js' %}"></script>
+    <script src="{% static 'updateCapture.js' %}"></script>
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', (ev)=>{
+            let form = document.getElementById('myform');
+            let targetDiv = document.querySelector('.displayContainer')
+            let imgContainer = document.querySelector('.imgContainer')
+            //get the captured media file
+            let input = document.getElementById('capture');
+            
+            input.addEventListener('change', (ev)=>{
+                console.dir( input.files[0] );
+                if(input.files[0].type.indexOf("image/") > -1){
+                    let img = document.getElementById('img');
+                    img.src = window.URL.createObjectURL(input.files[0]);
+                }
+                else {
+                    console.log("Fail to Capture Image")
+                }
+                
+                
+            })
+
+            input.onclick = function () {
+                if (targetDiv.style.display !== "none"){
+                    targetDiv.style.display = "none";
+                    imgContainer.style.display = "block";
+                }else{
+                    targetDiv.style.display="flex";
+                    imgContainer.style.display = "none";
+                }
+            }
+            
+            
+            
+        })
+    </script>
+
+</body>
+</html>

@@ -20,7 +20,12 @@ body{
   border: 2px dashed #489557;
   /* border-top: 2px solid lightgray; */
   padding: 1rem;
-  width: 50%;
+  min-height: 46vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }@media(max-width:768px){
   .container-dragDrop{
     width: 100%;
@@ -109,22 +114,30 @@ h5{
 }
 
 .icon{
-    font-size: 50px;
+    font-size: 75px;
     color: #489557;
+  }@media(max-width: 768px){
+    .icon{
+      font-size: 50px;
+    }
   }
 .buttons{
-    max-width: 100%;
+    width: 80%;
     display: flex;
     justify-content: space-between;
     margin-top: 2rem;
 }
 
 .buttons .reset {
-    width: 45%;
+    width: 30%;
     padding-block: 0.25rem;
     border-radius: 16px;
     border: 1px solid lightgray;
     background-color: #F3F4F5;
+}@media(max-width:768px){
+  .buttons .reset {
+    width: 45%;
+  }
 }
 
 .reset:hover{
@@ -133,15 +146,20 @@ h5{
   transition: all 0.6s ease-out;
 }
 .buttons .predict {
-  width: 45%;
+  width: 30%;
   padding-block: 0.25rem;
   border-radius: 16px;
   border: 2px solid #489557;
   background-color: #489557;
   color: white;
+}@media(max-width:768px){
+  .buttons .predict {
+    width: 45%;
+  }
 }
+
 .predict:hover{
-  border: 1px solid lightgray;
+  border: solid lightgray;
   background-color: #F3F4F5;
   color:black;
   transition: all 0.6s ease-out;
@@ -168,7 +186,7 @@ h5{
   /* border-top: 1px solid rgb(210, 210, 210); */
   background-color: #fff;
   width: 50%;
-}@media(max-width:768px){
+}@media(max-width:1366px){
   .img{
     width: 100%;
   }
@@ -253,9 +271,27 @@ p{
   margin-inline: 1rem;
 }
 
+.result{
+  margin-block: 2rem;
+  max-width: 70%;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+
+}@media(max-width: 1366px){
+  .result{
+    flex-direction: column;
+  }
+}
+@media(max-width: 638px){
+  .result{
+    flex-direction: column;
+  }
+}
+
 .boxTwo{
   margin-top: 2rem;
-  width: 90%;
+  width: auto;
   height: 30%;
   background-color: white;
   display: flex;
@@ -265,12 +301,12 @@ p{
   margin-inline: 1rem;
 }@media(max-width: 638px){
   .boxTwo{
-    width: 100%;
+    width: auto;
   }
 }
 
 .graph{
-  min-width: 70%;
+  min-width: auto;
   display: flex;
   justify-content: center;
 }
@@ -368,7 +404,11 @@ nav ul {
 
 nav li {
   display: inline-block;
+  
+}
 
+.fa-solid{
+  padding-right: 0.25rem;
 }
 
 nav li a {

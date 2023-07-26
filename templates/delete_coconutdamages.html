@@ -1,0 +1,72 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <link rel="stylesheet" href="{% static 'delete_coconutdamages.css' %}">
+    <link rel="stylesheet" href="{% static 'register.css' %}">
+    <script src="https://kit.fontawesome.com/d258feda9a.js" crossorigin="anonymous"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+   
+</head>
+
+<body class="bodyDB">
+
+    <nav>
+        <div class="nav-wrapper">
+            <div class="logo">
+                <a href="" class="icon-logo"><i class="fa-solid fa-virus-slash"></i>Classification</a>
+            </div>
+            <ul id="menu">
+                <li><a href="/">Image Classifier</a></li>
+                <li><a href="viewdatabase">Database</a></li>
+                <li><a href="captureimage">Image Capture</a></li>
+                <li><a href="{% url 'user-logout' %}"><i class="fa-solid fa-unlock-keyhole"></i>logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Menu Icon -->
+    <div class="menuIcon">
+        <span class="icon icon-bars"></span>
+        <span class="icon icon-bars overlay"></span>
+    </div>
+
+    <div class="logout-container">
+        <div class="lt-container">
+            <div class="lt-row row mt-5 ">
+                <div class="col-md-6 offset-md-3">
+                    <div class="lt-border border bg-white p-3">
+                        <div class="alert">
+                            <hr>
+                            <br>
+                            <h4>Are you sure you want to delete?</h4>
+                        </div>  
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            {{ form }}
+                            <a href="{% url 'coconutDamages' %}" class="href">Cancel</a>
+                            <input type="submit" class="btn-delete" value="Delete">
+                        </form>                  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <footer>
+        <p>Created by Jasper Villarosa. © 2023</p>
+    </footer>
+
+    <script src="{% static 'script.js' %}"></script>
+    <script src="{% static 'toggle.js' %}"></script>
+    <script src="{% static 'login.js' %}"></script>
+
+    
+    
+</body>
+</html>

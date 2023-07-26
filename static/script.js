@@ -7,7 +7,9 @@ const dragText = elem.querySelector(".header")
 const reset = elem.querySelector(".reset")
 const predict = elem.querySelector(".predict")
 let imgDisplay = document.querySelector('.img')
+let forForm = document.querySelector(".forForm")
 let graph = document.querySelector('.graph')
+let result = document.querySelector(".result")
 
 // prevent navigation 
 elem.addEventListener('dragover', (e) => {
@@ -44,6 +46,20 @@ reset.addEventListener('click', (e) => {
     imgDisplay.style.display = "none"
     graph.value = ''
 
+})
+
+predict.addEventListener('click', (e) => {
+    // e.preventDefault()
+    // result.style.display = 'flex'
+    // // form.action = "predictImage/"
+    // forForm.style.border = "solid blue" 
+    // if (result.style.display !== "none"){
+    //     forForm.style.display = "none";
+    //     result.style.display = "block";
+    // }else{
+    //     forForm.style.display="none";
+    //     result.style.display = "none";
+    // }
 })
 
 fileInput.addEventListener('click', (e) => {

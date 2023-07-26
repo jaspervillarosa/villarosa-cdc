@@ -1,0 +1,18 @@
+.href-logout{
+    font-weight: bold;
+    text-decoration: underline;
+    color: #489557;
+}
+h4{
+    margin-bottom: 1rem;
+}
+.href-logout:hover{
+    opacity: 0.8;
+}
+.logout-container{
+    margin-top: 10rem;
+    height: 100vh;
+}
+.lt-body{
+    height: 100vh;
+}

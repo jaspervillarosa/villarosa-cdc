@@ -1,0 +1,33 @@
+.l-box{
+    display: flex;
+    flex-direction: column;
+    width: 25vw;
+    height: 70vh;
+    margin-top: 10rem;
+}@media(max-width: 768px){
+    .l-box{
+        width: 45vw;
+    }
+}
+.l-box-sm{
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5rem;
+}
+.l-box-sm input {
+    margin-top: 0.5rem;
+    padding: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.l-box-sm .btn{
+    border-radius: 16px;
+    width: 50%;
+    background-color: #489557;
+    border: 1px solid #489557;
+}
+
+.l-box-sm .btn:hover{
+    border: 1px solid gray;
+    background-color: white;
+}

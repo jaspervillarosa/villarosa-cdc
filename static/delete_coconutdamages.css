@@ -1,0 +1,22 @@
+.href{
+    color: #489557;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+.href:hover{
+    opacity: 0.8;
+}
+
+.btn-delete{
+    margin-top: 1rem;
+    border: transparent;
+    text-decoration: underline;
+    color: red;
+    opacity: 0.8;
+    font-weight: bold;
+    cursor: pointer;
+}
+.btn-delete:hover{
+    opacity: 1;
+}
