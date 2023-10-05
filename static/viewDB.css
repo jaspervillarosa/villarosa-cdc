@@ -35,8 +35,8 @@
 
 .responsive-img{
     width: 100%;
-    max-width: 300px;
-    height: auto;
+    max-width: 200px;
+    height: 150px;
 }
 img{
     width:250px;

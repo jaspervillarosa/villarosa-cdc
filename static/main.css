@@ -384,22 +384,31 @@ nav {
 }
 
 nav ul {
-
   display: inline-block;
   list-style: none;
-  margin-top: -2px;
+  /* margin-top: -2px; */
   text-align: right;
   transition: transform 0.5s ease-out;
   -webkit-transition: transform 0.5s ease-out;
-}@media(max-width: 768px){
-  nav ul{
+}@media(max-width: 1280px){
+  nav ul li{
+    border: solid blue;
+    width: auto;
+    display: none;
+  }
+
+}
+@media(max-width: 768px){
+  nav ul li{
     display: none;
     width: auto;
   }
+
 }@media(orientation: landscape){
   nav ul {
     display: inline-block;
   }
+
 }
 
 nav li {

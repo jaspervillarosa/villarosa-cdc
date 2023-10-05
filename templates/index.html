@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'main.css' %}">
-    <link rel="stylesheet" href="{% static 'nav.css' %}">
     <script src="https://kit.fontawesome.com/d258feda9a.js" crossorigin="anonymous"></script>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 
@@ -35,17 +34,8 @@
             </div>
             <ul id="menu">
                 <li><a href="/">Image Classifier</a></li>
-                <li class="dropdown">
-                    <button class="link"> 
-                        Records
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-menu">
-                        Dropdown Content
-                        <!-- <a href="viewdatabase">Database</a>
-                        <a href="coconutdamages">Coconut Damages</a> -->
-                    </div>
-                </li>
+                <li><a href="viewdatabase">Database</a></li>
+                <li><a href="coconutdamages">Coconut Damages</a></li>
                 <li><a href="captureimage">Image Capture</a></li>
                 <li><a href="{% url 'user-logout' %}"><i class="fa-solid fa-unlock-keyhole"></i>logout</a></li>
             </ul>
@@ -76,9 +66,10 @@
     <div class="overlay-menu">
         <ul id="menu">
             <li><a href="#tryAgain">Image Classifier</a></li>
-            <li><a href="viewdatabase" >Database</a></li>
+            <li><a href="viewdatabase">Database</a></li>
+            <li><a href="coconutdamages">Coconut Damages</a></li>
             <li><a href="captureimage">Image Capture</a></li>
-            <li><a href="{% url 'user-logout' %}">logout</a></li>
+            <li><a class="logout" href="{% url 'user-logout' %}">logout</a></li>
         </ul>
     </div>
 
@@ -87,7 +78,7 @@
         <p>Upload Coconut Pest Damage for Classification</p><br>
     </div>
     <div class="box">
-            <form class="container-big" action="predictimage/" method="post" enctype="multipart/form-data">
+            <form class="container-big" action="predictimage" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="container-dragDrop">
                     <div class="container">

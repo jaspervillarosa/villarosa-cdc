@@ -5,7 +5,8 @@ from . import views
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("predictimage/",views.predictImage, name="predictImage"),
+    path("predictimage",views.predictImage, name="predictImage"),
+    # path("predictimage/viewdatabase", views.viewDatabase, name="viewDatabase"),
     path("viewdatabase", views.viewDatabase, name="viewDatabase"),
     path("captureimage", views.captureImage, name='captureImage'),
     path('pcadrcregister', user_view.register, name='user-register'),

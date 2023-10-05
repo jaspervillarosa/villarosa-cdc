@@ -15,6 +15,20 @@
    
 </head>
 
+<style>
+    .table {
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid black;
+    }
+
+    .table th, .table td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+    }
+</style>
+
 <body class="bodyDB">
 
     <nav>
@@ -25,6 +39,7 @@
             <ul id="menu">
                 <li><a href="/">Image Classifier</a></li>
                 <li><a href="viewdatabase">Database</a></li>
+                <li><a href="coconutdamages">Coconut Damages</a></li>
                 <li><a href="captureimage">Image Capture</a></li>
                 <li><a href="{% url 'user-logout' %}"><i class="fa-solid fa-unlock-keyhole"></i>logout</a></li>
             </ul>
@@ -43,34 +58,32 @@
     <div class="crud-Container">
              <!-- CRUD  -->
        <!-- add damages  -->
-   <table class="table table-borderless">
-    <thead class="cd-thead">
-      <tr class="cd-tr">
-        <th scope="col">Coconut Damages</th>
-        <th scope="col">Biological Control</th>
-        <th scope="col">Cultural Control</th>
-        <th scope="col">Chemical Control</th>
-        <th scope="col">Activity</th>
-      </tr>
-    </thead>
-    <tbody>
-        {% for item in items %}
-      <tr>
-        <th scope="row">{{item.name}}</th>
-        <td>{{item.biologicalcontrol}}</td>
-        <td>{{item.culturalcontrol}}</td>
-        <td>{{item.chemicalcontrol}}</td>
-        <td>
-            <a class="btn btn-info btn-sm mr-2"
-                href="{% url 'update_coconutDamages' item.id %}">Update</a>
-            <a class="btn btn-danger btn-sm ml-2"
-                href="{% url 'delete_coconutDamages' item.id %}">Delete</a>
-        </td>
-      </tr>
-      {% endfor %}
+       <table class="table table-bordered">
+        <thead class="cd-thead">
+          <tr class="cd-tr">
+            <th scope="col">Coconut Damages</th>
+            <th scope="col">Biological Control</th>
+            <th scope="col">Cultural Control</th>
+            <th scope="col">Chemical Control</th>
+            <th scope="col">Activity</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in items %}
+          <tr>
+            <th scope="row">{{item.name}}</th>
+            <td>{{item.biologicalcontrol}}</td>
+            <td>{{item.culturalcontrol}}</td>
+            <td>{{item.chemicalcontrol}}</td>
+            <td>
+              <a class="btn btn-info btn-sm mr-2" href="{% url 'update_coconutDamages' item.id %}">Update</a>
+              <a class="btn btn-danger btn-sm ml-2" href="{% url 'delete_coconutDamages' item.id %}">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
       
-    </tbody>
-  </table>
 </div>
 
     <footer>

@@ -41,6 +41,7 @@
             <ul id="menu">
                 <li><a href="/">Image Classifier</a></li>
                 <li><a href="viewdatabase">Database</a></li>
+                <li><a href="coconutdamages">Coconut Damages</a></li>
                 <li><a href="captureimage">Image Capture</a></li>
                 <li><a href="{% url 'user-logout' %}"><i class="fa-solid fa-unlock-keyhole"></i>logout</a></li>
             </ul>
@@ -55,7 +56,8 @@
     <div class="overlay-menu">
         <ul id="menu">
             <li><a href="#tryAgain">Image Classifier</a></li>
-            <li><a href="viewdatabase" >Database</a></li>
+            <li><a href="viewdatabase">Database</a></li>
+            <li><a href="coconutdamages">Coconut Damages</a></li>
             <li><a href="captureimage">Image Capture</a></li>
             <li><a href="{% url 'user-logout' %}">logout</a></li>
         </ul>
@@ -103,7 +105,7 @@
         
     </div>
     <div class="tryAgain" id="tryAgain">
-        <button class="tryAgain-input" onclick="location.href = '/'">Try Again</button>
+        <button class="tryAgain-input" onclick="location.href = '/'">Classify Again</button>
     </div>
     <!-- <div>
         <p>{{train_acc}}</p>
