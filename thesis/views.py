@@ -460,8 +460,18 @@ def predictImage(request):
 def viewDatabase(request):
     listofImages = os.listdir('./media/')
     listofImagePath = ['./media/'+i for i in listofImages]
+
+    listofImages2 = os.listdir('./media/apwmedia/')
+    listofImagePath2 = ['./media/apwmedia/'+i for i in listofImages2]
+
+    listofImages3 = os.listdir('./media/arbmedia/')
+    listofImagePath3 = ['./media/apwmedia/'+i for i in listofImages3]
+
+    listofImages4 = os.listdir('./media/clbmedia/')
+    listofImagePath4 = ['./media/apwmedia/'+i for i in listofImages4]
+
     fs=FileSystemStorage()
-    context = {'listofImagePath': listofImagePath}
+    context = {'listofImagePath': listofImagePath, 'listofImagePath2': listofImagePath2, 'listofImagePath3': listofImagePath3, 'listofImagePath4': listofImagePath4, }
     return render(request, 'viewDB.html', context)
 
 @login_required(login_url='user-login')

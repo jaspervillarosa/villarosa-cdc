@@ -46,18 +46,41 @@
             <div class="title-DB">
                 <h3>Browse by category</h3>
                 <div class="buttons-category">
-                    <button class="active"><i class="fa-solid fa-magnifying-glass"></i> Rhinoceros Beetle</button>
-                    <button><i class="fa-solid fa-magnifying-glass"></i> Scale Insect</button>
-                    <button ><i class="fa-solid fa-magnifying-glass"></i> Asiatic Palm Weevil</button>
-                    <button><i class="fa-solid fa-magnifying-glass"></i> Leaf Beetle</button>
+                    <button   onclick="scrollToSection('listImages')" class="active"><i class="fa-solid fa-magnifying-glass"></i> Scale Insect</button>
+                    <button  onclick="scrollToSection('listImages2')"><i class="fa-solid fa-magnifying-glass"></i> Asiatic Palm Weevil </button>
+                    <button  onclick="scrollToSection('listImages3')"><i class="fa-solid fa-magnifying-glass"></i> Rhinoceros Beetle </button>
+                    <button  onclick="scrollToSection('listImages4')"><i class="fa-solid fa-magnifying-glass"></i> Leaf Beetle</button>
                 </div>
             </div>
-            <div class="listImages">
+            <div class="listImages" id="listImages">
                  <!-- <h3>The list of uploaded images {{listofImagePath}} </h3> -->
                 {% for i in listofImagePath %}
                 <img class="responsive-img" src={{i}}> <br>
                 {% endfor %}
             </div>
+
+            <div class="listImages" id="listImages2">
+                <!-- <h3>The list of uploaded images {{listofImagePath}} </h3> -->
+               {% for i in listofImagePath2 %}
+               <img class="responsive-img" src={{i}}> <br>
+               {% endfor %}
+           </div>
+
+           <div class="listImages" id="listImages3">
+            <!-- <h3>The list of uploaded images {{listofImagePath}} </h3> -->
+           {% for i in listofImagePath3 %}
+           <img class="responsive-img" src={{i}}> <br>
+           {% endfor %}
+            </div>
+
+            <div class="listImages" id="listImages4">
+                <!-- <h3>The list of uploaded images {{listofImagePath}} </h3> -->
+               {% for i in listofImagePath4 %}
+               <img class="responsive-img" src={{i}}> <br>
+               {% endfor %}
+           </div>
+
+       
         </div>
     </div>
 
@@ -66,6 +89,16 @@
     </footer>
 
     <script src="{% static 'toggle.js' %}"></script>
+
+    <script>
+        // JavaScript function to scroll to a section with a given ID
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
     
 </body>
 </html>
